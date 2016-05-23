@@ -1,0 +1,117 @@
+import pygame
+
+# Initialize pygame so that sounds can load
+pygame.mixer.pre_init(44100, -16, 1, 512)
+pygame.init()
+
+# -- IMAGES --
+
+# Player sprites
+player_walk_1_right = pygame.image.load("sprites/player_walk_1_right.png")
+player_walk_2_right = pygame.image.load("sprites/player_walk_2_right.png")
+player_walk_3_right = pygame.image.load("sprites/player_walk_3_right.png")
+player_walk_4_right = pygame.image.load("sprites/player_walk_4_right.png")
+
+player_walk_1_left = pygame.image.load("sprites/player_walk_1_left.png")
+player_walk_2_left = pygame.image.load("sprites/player_walk_2_left.png")
+player_walk_3_left = pygame.image.load("sprites/player_walk_3_left.png")
+player_walk_4_left = pygame.image.load("sprites/player_walk_4_left.png")
+
+player_walk_list_right = [player_walk_1_right, player_walk_2_right,
+                          player_walk_3_right, player_walk_4_right]
+
+player_walk_list_left = [player_walk_1_left, player_walk_2_left,
+                          player_walk_3_left, player_walk_4_left]
+
+player_jump_right = pygame.image.load("sprites/player_jump_right.png")
+player_jump_left = pygame.image.load("sprites/player_jump_left.png")
+
+player_roll_right_1 = pygame.image.load("sprites/player_roll_right_1.png")
+player_roll_right_2 = pygame.image.load("sprites/player_roll_right_2.png")
+player_roll_right_3 = pygame.image.load("sprites/player_roll_right_3.png")
+player_roll_right_4 = pygame.image.load("sprites/player_roll_right_4.png")
+
+player_roll_list_right = [player_roll_right_1, player_roll_right_2, player_roll_right_3,
+                          player_roll_right_4, player_roll_right_2, player_roll_right_1]
+
+player_roll_left_1 = pygame.image.load("sprites/player_roll_left_1.png")
+player_roll_left_2 = pygame.image.load("sprites/player_roll_left_2.png")
+player_roll_left_3 = pygame.image.load("sprites/player_roll_left_3.png")
+player_roll_left_4 = pygame.image.load("sprites/player_roll_left_4.png")
+
+player_roll_list_left = [player_roll_left_1, player_roll_left_2, player_roll_left_3,
+                          player_roll_left_4, player_roll_left_2, player_roll_left_1]
+
+player_shoot_right = pygame.image.load("sprites/player_shoot_right.png")
+player_shoot_left = pygame.image.load("sprites/player_shoot_left.png")
+
+# Attack sprites
+fireball_right = pygame.image.load("sprites/fireball_right.png")
+fireball_left = pygame.image.load("sprites/fireball_left.png")
+
+# Animals
+bird_left_blue = pygame.image.load("sprites/bird_left_blue.png")
+bird_right_blue = pygame.image.load("sprites/bird_right_blue.png")
+bird_left_red = pygame.image.load("sprites/bird_left_red.png")
+bird_right_red = pygame.image.load("sprites/bird_right_red.png")
+bird_left_yellow = pygame.image.load("sprites/bird_left_yellow.png")
+bird_right_yellow = pygame.image.load("sprites/bird_right_yellow.png")
+
+butterfly_red_1 = pygame.image.load("sprites/butterfly_red_1.png")
+butterfly_red_2 = pygame.image.load("sprites/butterfly_red_2.png")
+butterfly_red_3 = pygame.image.load("sprites/butterfly_red_3.png")
+butterfly_list_red = [butterfly_red_1, butterfly_red_2, butterfly_red_3, butterfly_red_2]
+
+butterfly_blue_1 = pygame.image.load("sprites/butterfly_blue_1.png")
+butterfly_blue_2 = pygame.image.load("sprites/butterfly_blue_2.png")
+butterfly_blue_3 = pygame.image.load("sprites/butterfly_blue_3.png")
+butterfly_list_blue = [butterfly_blue_1, butterfly_blue_2, butterfly_blue_3, butterfly_blue_2]
+
+butterfly_green_1 = pygame.image.load("sprites/butterfly_green_1.png")
+butterfly_green_2 = pygame.image.load("sprites/butterfly_green_2.png")
+butterfly_green_3 = pygame.image.load("sprites/butterfly_green_3.png")
+butterfly_list_green = [butterfly_green_1, butterfly_green_2, butterfly_green_3, butterfly_green_2]
+
+# Tilesets
+tileset_template = pygame.image.load("sprites/tileset_template.png")
+tileset_grass = pygame.image.load("sprites/tileset_grass.png")
+tileset_details = pygame.image.load("sprites/tileset_details.png")
+tileset_oak_trees = pygame.image.load("sprites/tileset_oak_trees.png")
+tileset_house_1 = pygame.image.load("sprites/tileset_house_1.png")
+tileset_platforms = pygame.image.load("sprites/tileset_platforms.png")
+
+# Backgrounds & clouds
+sky_background = pygame.image.load("sprites/background.png")
+cloud = pygame.image.load("sprites/cloud.png")
+
+# User interface
+mana_bar = pygame.image.load("sprites/manabar.png")
+
+# -- SOUNDS --
+#jump = pygame.mixer.Sound("sounds/jump.wav")
+roll = pygame.mixer.Sound("sounds/roll.wav")
+footstep_1 = pygame.mixer.Sound("sounds/footstep_1.wav")
+fireball_sound = pygame.mixer.Sound("sounds/fireball.wav")
+
+# -- SPRITE LISTS -- (used for pixel format converting)
+player_list = [player_walk_1_right, player_walk_2_right, player_walk_3_right,
+               player_walk_4_right, player_walk_1_left, player_walk_2_left,
+               player_walk_3_left, player_walk_4_left, player_jump_right,
+               player_jump_left, player_roll_right_1, player_roll_right_2,
+               player_roll_right_3, player_roll_right_4, player_roll_right_2,
+               player_roll_right_1, player_roll_left_1, player_roll_left_2,
+               player_roll_left_3, player_roll_left_4, player_roll_left_2,
+               player_roll_left_1, player_shoot_right]
+
+attack_list = [fireball_right, fireball_left]
+
+animal_list = [bird_left_blue, bird_right_blue, bird_left_red, bird_right_red,
+               bird_left_yellow, bird_right_yellow, butterfly_red_1, butterfly_red_2,
+               butterfly_red_3, butterfly_blue_1, butterfly_blue_2, butterfly_blue_3,
+               butterfly_green_1, butterfly_green_2, butterfly_green_3]
+
+tileset_list = [tileset_grass, tileset_details, tileset_oak_trees, tileset_house_1]
+
+background_list = [sky_background, cloud]
+
+all_sprites = [player_list, attack_list, animal_list, tileset_list, background_list]
